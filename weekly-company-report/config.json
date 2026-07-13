@@ -1,0 +1,48 @@
+{
+  "description": "週次・会社重要データ分析レポート設定。Google Drive上の対象ファイルを毎週読み込み、前回対比を分析してSlack DMへ報告する。",
+  "slack": {
+    "target": "U09EXE9METG",
+    "target_note": "レポート送信先。自分宛DM（ログインユーザーのuser_id）。"
+  },
+  "schedule": {
+    "note": "曜日・時刻は後日確定。確定後にRoutineのcronを設定する。"
+  },
+  "files": [
+    {
+      "key": "16期集計",
+      "fileId": "11vyIIXFfJO7EigGr0AHBndpuHKapJKQkMT0sYhyqXnk",
+      "type": "spreadsheet",
+      "role": "全社16期の売上・契約・反響の進捗ダッシュボード（集客区分×物件種別×月次）"
+    },
+    {
+      "key": "売買部セールスファネル",
+      "fileId": "1M0-eKaPmYQ_K4KDg1_vhis1W4FbRpY3ZlNgocJg1kxo",
+      "type": "spreadsheet",
+      "role": "売買部門の下半期セールスファネル（反響→接点→案内→商談→申込→成約）。部署別・担当別・媒体別内訳あり"
+    },
+    {
+      "key": "クラフト顧客管理シート16期",
+      "fileId": "1bsojSYHzMZ6zLm6FpFjdd53bFOuG9qnuF0Y5r9PJ1-0",
+      "type": "spreadsheet",
+      "role": "ウィローズクラフト(CR)の月間KPI報告書（反響・完工・受注率・売上・粗利・媒体別）"
+    },
+    {
+      "key": "会員登録顧客まとめ",
+      "fileId": "1hSPN-jwGn_yZbmo1kt5PegAG2RECYyq0",
+      "type": "xlsx",
+      "role": "会員登録した顧客のまとめ（登録数・予算帯・エリア・ランク・支店・担当）"
+    },
+    {
+      "key": "会員登録反響リスト",
+      "fileId": "1PByaq8cTjMfI3w8-RAaNyP6IcGDLgXQuFBcgyI7qIS8",
+      "type": "spreadsheet",
+      "role": "会員登録フォーム反響の明細（1行=1リード。受信日時・エリア・予算・種別・ランク・支店・担当・ステータス）"
+    },
+    {
+      "key": "Meta物件広告",
+      "fileId": "1dU-ggcxkq2rO3yMDSfWUbCA6Zz_oRE41tOhdPud3RKw",
+      "type": "spreadsheet",
+      "role": "物件広告(LP/Meta)反響の明細（1行=1リード。反響日・入口・物件・担当・通電/コンタクト/アポ/結果）"
+    }
+  ]
+}
