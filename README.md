@@ -1,6 +1,34 @@
 # デスクトップ整理スクリプト (Windows)
 
-デスクトップ上のファイルを **種別ごと** にフォルダ分けする PowerShell スクリプトです。
+デスクトップ上のファイルを整理する PowerShell スクリプトです。用途に応じて2種類あります。
+
+- **`Organize-Desktop.ps1`** … ファイルを **種別ごと**（画像・PDF・文書…）に分ける
+- **`Sort-DesktopByUsage.ps1`** … ファイルを **使用中／未使用** に分ける（下記参照）
+
+---
+
+## 使用中／未使用で分ける: `Sort-DesktopByUsage.ps1`
+
+各ファイルの「最終使用日時」（最終アクセス日時と最終更新日時のうち新しい方）を見て、
+一定期間より古いものを `デスクトップ\未使用\` へ、新しいものを `デスクトップ\使用中\` へ振り分けます。
+
+```powershell
+# まずプレビュー（何も移動しません／既定は90日基準）
+powershell -ExecutionPolicy Bypass -File .\Sort-DesktopByUsage.ps1 -WhatIf
+
+# 本番実行
+powershell -ExecutionPolicy Bypass -File .\Sort-DesktopByUsage.ps1
+
+# 基準日数を変える（例: 30日）
+powershell -ExecutionPolicy Bypass -File .\Sort-DesktopByUsage.ps1 -Days 30
+```
+
+**注意:** Windows は既定で「最終アクセス日時」の更新を無効にしている場合があります。
+その場合は「最終更新日時」で判定されるため、「開いただけ」のファイルは未使用側に分類されることがあります。
+
+---
+
+## 種別ごとに分ける: `Organize-Desktop.ps1`
 
 ## 何をするか
 
