@@ -176,16 +176,16 @@ def delta(cur, prev, key):
 
 def format_report(a, prev, today):
     L = []
-    L.append(f"📊 *ウィローズクラブ {FY_LABEL} 週次レポート* ({today:%Y/%m/%d}時点)")
+    L.append(f"📊 **ウィローズクラブ {FY_LABEL} 週次レポート** ({today:%Y/%m/%d}時点)")
     fy_pct = round(a["elapsed_months"] / 12 * 100)
     L.append(f"期の進捗: 第{int(a['elapsed_months'])+1}ヶ月目 / 12ヶ月 (約{fy_pct}%経過)")
     L.append("")
 
     # 1. 実数
-    L.append("*① 会員内の行動の実数*")
-    L.append(f"・紹介/リピート 総登録数: *{a['total_records']}件*"
+    L.append("**① 会員内の行動の実数**")
+    L.append(f"・紹介/リピート 総登録数: **{a['total_records']}件**"
              f"{delta(a['total_records'], prev, 'total_records')}")
-    L.append(f"・成約完了: *{a['seiyaku_done']}件* (成約率 {a['seiyaku_rate']}%)"
+    L.append(f"・成約完了: **{a['seiyaku_done']}件** (成約率 {a['seiyaku_rate']}%)"
              f"{delta(a['seiyaku_done'], prev, 'seiyaku_done')}")
     L.append(f"・当期発生(紹介取得日が{FY_LABEL}内): {a['in_fy_records']}件"
              f"{delta(a['in_fy_records'], prev, 'in_fy_records')}")
@@ -196,7 +196,7 @@ def format_report(a, prev, today):
     L.append("")
 
     # 2. 獲得ランキング
-    L.append("*② 誰がどの位獲得したか (社員別 社内紹介pt)*")
+    L.append("**② 誰がどの位獲得したか (社員別 社内紹介pt)**")
     prev_emp = {e["name"]: e for e in prev.get("emp_ranking", [])} if prev else {}
     for i, e in enumerate(a["emp_ranking"], 1):
         d = ""
@@ -205,7 +205,7 @@ def format_report(a, prev, today):
             if dd:
                 dd = int(dd) if float(dd).is_integer() else dd
                 d = f" ({'+' if dd > 0 else ''}{dd})"
-        L.append(f"{i}. {e['name']}  *{round(e['points'],1)}pt*{d}"
+        L.append(f"{i}. {e['name']}  **{round(e['points'],1)}pt**{d}"
                  f"  (紹介{e['shokai']}/ﾘﾋﾟｰﾄ{e['repeat']}/他部門{e['shanai_hoka']})")
     L.append(f"（社員pt総発行 {a['shain_total_p']}pt / "
              f"クラブpt発行 紹介相談{int(a['club_shokai_p']):,} + "
@@ -213,16 +213,16 @@ def format_report(a, prev, today):
     L.append("")
 
     # 3. 着地見込み
-    L.append(f"*③ {FY_LABEL} 着地見込み*")
+    L.append(f"**③ {FY_LABEL} 着地見込み**")
     L.append(f"・月次ペース {a['run_rate_per_month']}件/月 → "
-             f"*年間着地 約{a['forecast_annual']}件*")
+             f"**年間着地 約{a['forecast_annual']}件**")
     L.append(f"・直近3ヶ月ペース基準の着地: 約{a['forecast_recent3']}件")
     mk = list(a["monthly"].items())
     L.append("・月次推移: " + " ".join(f"{k[-2:]}月:{v}" for k, v in mk))
     L.append("")
 
     # 会員(お客様)側 上位
-    L.append("*④ 紹介・リピートが多いクラブ会員(お客様) 上位5*")
+    L.append("**④ 紹介・リピートが多いクラブ会員(お客様) 上位5**")
     for i, m in enumerate(a["member_ranking"][:5], 1):
         nm = m["name"] or f"ID:{m['id']}"
         L.append(f"{i}. {nm}  行動{m['actions']}件 / 成約{m['seiyaku']}件")
