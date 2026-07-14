@@ -1,8 +1,8 @@
 {
   "description": "週次・会社重要データ分析レポート設定。Google Drive上の対象ファイルを毎週読み込み、前回対比を分析してSlack DMへ報告する。",
   "slack": {
-    "target": "U09EXE9METG",
-    "target_note": "レポート送信先。自分宛DM（ログインユーザーのuser_id）。"
+    "target": "C0BH28GB48N",
+    "target_note": "レポート送信先。Slackチャンネル #重要指標分析（private）。"
   },
   "schedule": {
     "note": "曜日・時刻は後日確定。確定後にRoutineのcronを設定する。"
