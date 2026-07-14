@@ -1,9 +1,82 @@
-# デスクトップ整理スクリプト (Windows)
+# 業務効率化スクリプト集 (Windows / Microsoft 365)
 
-デスクトップ上のファイルを整理する PowerShell スクリプトです。用途に応じて2種類あります。
+PowerShell スクリプト集です。
 
-- **`Organize-Desktop.ps1`** … ファイルを **種別ごと**（画像・PDF・文書…）に分ける
-- **`Sort-DesktopByUsage.ps1`** … ファイルを **使用中／未使用** に分ける（下記参照）
+- **`New-OutlookReplyDrafts.ps1`** … Outlook を仕分けし、**返信すべきメールだけに返信の下書きを自動作成**（下記参照）
+- **`Organize-Desktop.ps1`** … デスクトップのファイルを **種別ごと**（画像・PDF・文書…）に分ける
+- **`Sort-DesktopByUsage.ps1`** … デスクトップのファイルを **使用中／未使用** に分ける（下記参照）
+
+---
+
+## Outlook 返信下書きの自動作成: `New-OutlookReplyDrafts.ps1`
+
+受信トレイを仕分けし、**返信が必要なメールにだけ返信の下書きを Outlook 上に作成**します。
+**送信は一切自動化しません**。作られるのは「下書き」だけなので、内容を確認・手直しして、
+送信ボタンはあなたが押します（誤送信ゼロ）。
+
+### 仕分けの考え方（返信不要メールの除外）
+
+次のルールで自動的にふるい分け、残ったものだけ下書きを作ります。
+
+| 除外するもの | 判定方法 |
+|---|---|
+| 自動送信・配信専用 | 差出人が `noreply@` 等 / 本文に「配信停止・セミナー・アンケート」等 |
+| 自分が CC のみ | 主宛（To）が別の人 → その人が主担当なので下書きを作らない |
+| **知らない業者・新規営業** | **送信済みメールから作った「既知の取引先リスト」に載っていない差出人** |
+| （フリーメール） | gmail 等はアドレス完全一致のときだけ対象 |
+| 処理済み | 一度下書きを作ったメールにはカテゴリを付け、二重作成を防止 |
+
+「既知の取引先」は、あなたが過去に返信したことのある相手（送信済みトレイ）から
+自動生成されるため、リストを手で作る必要はありません。
+
+### 返信本文
+
+内容の種別（見積受領／資料受領／依頼・質問／汎用）に応じたテンプレート定型文を、
+相手の名前を差し込んで挿入します。依頼・質問型には「回答を書き足す箇所」を明示します。
+
+### 事前準備（初回のみ・管理者権限不要）
+
+```powershell
+Install-Module Microsoft.Graph.Authentication -Scope CurrentUser
+```
+
+初回実行時に、ブラウザで会社アカウント（`n.takeda@willows-group.com`）にログインし、
+`Mail.ReadWrite` の権限に同意します（以降はログインが維持されます）。
+
+### 使い方
+
+```powershell
+# まずプレビュー（下書きは作らず、仕分け結果だけ表示）
+powershell -ExecutionPolicy Bypass -File .\New-OutlookReplyDrafts.ps1 -WhatIf
+
+# 本番実行（直近3日・社外の既知取引先のみに下書き作成）
+powershell -ExecutionPolicy Bypass -File .\New-OutlookReplyDrafts.ps1
+
+# 未読のみ・直近7日を対象
+powershell -ExecutionPolicy Bypass -File .\New-OutlookReplyDrafts.ps1 -LookbackDays 7 -UnreadOnly
+
+# 新しい取引先を反映（取引先リストを作り直す）
+powershell -ExecutionPolicy Bypass -File .\New-OutlookReplyDrafts.ps1 -RebuildAllowlist
+```
+
+### 主なオプション
+
+| オプション | 意味 |
+|---|---|
+| `-LookbackDays <日数>` | 受信トレイの何日前までを対象にするか（既定: 3） |
+| `-UnreadOnly` | 未読メールだけを対象にする |
+| `-IncludeInternal` | 社内（willows-group.com 等）宛も対象に含める（既定は社外のみ） |
+| `-MaxDrafts <件数>` | 1回に作る下書きの上限（既定: 20） |
+| `-RebuildAllowlist` | 既知の取引先リストを作り直す |
+| `-WhatIf` | 実際には作らず、対象だけ表示（プレビュー） |
+
+### カスタマイズ
+
+`New-OutlookReplyDrafts.ps1` の冒頭「設定」ブロックや `Get-ReplyTemplate` 関数を編集すると、
+署名・テンプレート文面・除外キーワード・社内ドメインなどを調整できます。
+
+> **メモ:** 本スクリプトはメールの**読み取りと下書き作成**のみを行い、送信は行いません。
+> 下書きは Outlook の［下書き］フォルダに入ります。
 
 ---
 
