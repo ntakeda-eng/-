@@ -1,0 +1,203 @@
+{
+  "total_records": 374,
+  "in_fy_records": 221,
+  "seiyaku_done": 117,
+  "seiyaku_rate": 31.3,
+  "member_actions": 118,
+  "by_shubetsu": {
+    "リピート": 115,
+    "社員が源泉": 69,
+    "紹介": 45,
+    "未成約者から紹介": 13
+  },
+  "by_taio": {
+    "社内紹介(他部門)": 157,
+    "リピート": 38,
+    "社内紹介(自部門)": 27,
+    "紹介反響": 20
+  },
+  "by_jigyo": {
+    "実需（買う）": 45,
+    "エンドリフォーム見積": 39,
+    "賃貸（借りる）": 39,
+    "実需（売る）": 26,
+    "リフォーム成約": 21,
+    "法人提携": 12,
+    "賃貸（貸す）": 12,
+    "投資（売る）": 11,
+    "投資（買う）": 10,
+    "賃貸（管理）": 8,
+    "インテリアサービス": 6,
+    "業者リフォーム見積": 3,
+    "人事（人材）": 3,
+    "海外（国際）事業": 3,
+    "投資": 1,
+    "立ち退き": 1,
+    "BU→CR": 1,
+    "BU仕入れ": 1
+  },
+  "club_shokai_p": 104500.0,
+  "club_seiyaku_p": 351000.0,
+  "shain_total_p": 130.2,
+  "elapsed_months": 9.47,
+  "run_rate_per_month": 23.3,
+  "forecast_annual": 280,
+  "forecast_recent3": 260,
+  "monthly": {
+    "2025/10": 40,
+    "2025/11": 27,
+    "2025/12": 23,
+    "2026/01": 28,
+    "2026/02": 25,
+    "2026/03": 25,
+    "2026/04": 20,
+    "2026/05": 18,
+    "2026/06": 8,
+    "2026/07": 7
+  },
+  "emp_ranking": [
+    {
+      "name": "高橋佐知",
+      "points": 18.0,
+      "shokai": 3,
+      "repeat": 3,
+      "shanai_hoka": 14,
+      "records": 16
+    },
+    {
+      "name": "橋本風馬",
+      "points": 10.0,
+      "shokai": 1,
+      "repeat": 11,
+      "shanai_hoka": 11,
+      "records": 17
+    },
+    {
+      "name": "仁山倫太郎",
+      "points": 9.2,
+      "shokai": 11,
+      "repeat": 5,
+      "shanai_hoka": 11,
+      "records": 23
+    },
+    {
+      "name": "折橋正幸",
+      "points": 9.1,
+      "shokai": 2,
+      "repeat": 2,
+      "shanai_hoka": 11,
+      "records": 16
+    },
+    {
+      "name": "武田尚也",
+      "points": 6.0,
+      "shokai": 2,
+      "repeat": 6,
+      "shanai_hoka": 8,
+      "records": 8
+    },
+    {
+      "name": "朝倉大樹",
+      "points": 6.0,
+      "shokai": 3,
+      "repeat": 5,
+      "shanai_hoka": 7,
+      "records": 8
+    },
+    {
+      "name": "峯川哲太",
+      "points": 5.4,
+      "shokai": 1,
+      "repeat": 9,
+      "shanai_hoka": 9,
+      "records": 10
+    },
+    {
+      "name": "伊藤允紀",
+      "points": 5.0,
+      "shokai": 4,
+      "repeat": 0,
+      "shanai_hoka": 5,
+      "records": 7
+    },
+    {
+      "name": "齊藤城治",
+      "points": 5.0,
+      "shokai": 2,
+      "repeat": 0,
+      "shanai_hoka": 6,
+      "records": 6
+    },
+    {
+      "name": "大坪輝",
+      "points": 4.3,
+      "shokai": 0,
+      "repeat": 6,
+      "shanai_hoka": 8,
+      "records": 9
+    }
+  ],
+  "member_ranking": [
+    {
+      "id": 94030455,
+      "name": "倉地秀朋",
+      "actions": 4,
+      "seiyaku": 4
+    },
+    {
+      "id": 94010196,
+      "name": "島田翔太",
+      "actions": 4,
+      "seiyaku": 4
+    },
+    {
+      "id": 225467851,
+      "name": "小林由美子",
+      "actions": 4,
+      "seiyaku": 2
+    },
+    {
+      "id": 167775859,
+      "name": "坂井 陽子",
+      "actions": 3,
+      "seiyaku": 3
+    },
+    {
+      "id": 94026338,
+      "name": "小倉洋子",
+      "actions": 3,
+      "seiyaku": 3
+    },
+    {
+      "id": 186991660,
+      "name": "LEE CHUI YEE",
+      "actions": 3,
+      "seiyaku": 2
+    },
+    {
+      "id": 94573285,
+      "name": "株式会社スカーレット＆フィールド",
+      "actions": 2,
+      "seiyaku": 2
+    },
+    {
+      "id": 219188349,
+      "name": "落合大輝",
+      "actions": 2,
+      "seiyaku": 2
+    },
+    {
+      "id": 94290804,
+      "name": "菊地健太",
+      "actions": 2,
+      "seiyaku": 2
+    },
+    {
+      "id": 187385259,
+      "name": "志田 英子",
+      "actions": 2,
+      "seiyaku": 2
+    }
+  ],
+  "_generated_at": "2026-07-14"
+}
