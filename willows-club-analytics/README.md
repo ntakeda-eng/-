@@ -6,8 +6,11 @@ Slack に週1回レポートする仕組み。
 
 - 対象スプレッドシート: `1VyWfjLR4v2bMu8ccqPj01lN67e5Hn3KLj-NqG3J8XM4`（⭐紹介・リピートリスト）
 - 対象タブ: `16期入力用`
-- 配信: 毎週金曜 17:00（JST）／ Slack
+- 配信: 毎週金曜 17:00（JST）／ Slack **#ウィローズクラブ社内紹介分析**（`C0BH8036LAY`）
 - 会計年度: **16期 = 2025/10/1 〜 2026/9/30**
+
+各種パラメータ（配信先チャンネル・対象シート・会計年度）は [`config.json`](config.json) に集約。
+配信先を変えるときは `config.json` の `slack_channel_id` を書き換え、週次トリガーを作り直す。
 
 ---
 
@@ -64,7 +67,7 @@ python3 analyze.py /tmp/willows.xlsx \
 1. 対象ブランチ `claude/willows-club-analytics-ehe2ae` を fetch/checkout
 2. Google Drive から対象スプレッドシートを xlsx でエクスポート
 3. `analyze.py` を実行（直近の `snapshots/*.json` を `--prev` に指定）
-4. 生成レポートを Slack に投稿
+4. 生成レポートを Slack チャンネル（`config.json` の `slack_channel_id`）に投稿
 5. 当週スナップショットを `snapshots/` にコミット（翌週の前週比用）
 
-配信先やタイミングを変えたい場合はスケジュールトリガーの設定を変更する。
+配信先やタイミングを変えたい場合は `config.json` を更新のうえスケジュールトリガーを作り直す。

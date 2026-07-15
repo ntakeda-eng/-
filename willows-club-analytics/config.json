@@ -1,0 +1,15 @@
+{
+  "spreadsheet_file_id": "1VyWfjLR4v2bMu8ccqPj01lN67e5Hn3KLj-NqG3J8XM4",
+  "spreadsheet_name": "⭐紹介・リピートリスト",
+  "sheet_tab": "16期入力用",
+  "slack_channel_id": "C0BH8036LAY",
+  "slack_channel_name": "#ウィローズクラブ社内紹介分析",
+  "schedule": "毎週金曜 17:00 JST (cron: 0 8 * * 5 UTC)",
+  "branch": "claude/willows-club-analytics-ehe2ae",
+  "fiscal_year": {
+    "label": "16期",
+    "start": "2025-10-01",
+    "end": "2026-09-30"
+  },
+  "note": "配信先を変えるときは slack_channel_id を書き換え、週次トリガーを作り直す。"
+}
