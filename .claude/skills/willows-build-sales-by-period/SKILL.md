@@ -22,6 +22,17 @@ BU_CFの「入力シート」を1物件1行で抜き出し、売却決済日で�
 4. 検算：②の合計行（棟数・売上高）を Python で入力シートから直接集計した値と突き合わせる
 5. ユーザーにファイルを渡し、下記「必ず伝えること」を添える
 
+## Googleスプレッドシートで欲しいと言われたら
+
+Sheets編集コネクタが無くDriveの `create_file` しか使えない場合、**xlsxのbase64アップロードは使わない**（64KB級のbase64は転記が失敗し、安全分類器にも止められる）。代わりに1タブ構成の数式入りCSVをテキストで渡す。
+
+1. `python .claude/skills/willows-build-sales-by-period/scripts/build_gsheet_csv.py <BU_CF.xlsx> <out.csv> YYYY-MM-DD`
+   - 集計表（①②③）をA〜J列、物件データをN〜X列に置き、集計式は `N:N` などの列全体参照で書くので約47KBに収まる
+   - 金額は万円（ROUND(…/10000)）、粗利率は%表示の数値
+2. 検算：CSVを openpyxl でxlsx化（MINIFS/MAXIFSには `_xlfn.` を付ける）→ recalc → xlsx版と数値一致を確認
+3. Drive `create_file`：title、`contentMimeType: text/csv`、`textContent` にCSV全文 → Googleスプレッドシートに変換される
+4. `read_file_content` で計算結果を読み、xlsx版と一致することを確認してからリンクを渡す
+
 ## 出力ブックの構成
 
 | シート | 内容 |
